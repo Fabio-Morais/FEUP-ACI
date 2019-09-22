@@ -24,9 +24,13 @@ int main(){
     while(1){
         printf("Enviar mensagem: ");
         scanf("%s", buf);
+        //fgets(buf,BUF_LEN, stdin);
         len=send(sock, buf, strlen(buf)+1, 0);
+        if(!strcmp("exit", buf)){
+            printf("Closed");
+            break;
+        }
     }
-
- 
+    close(sock); 
     return 1;
 }

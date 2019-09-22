@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> 
+#include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -47,8 +48,14 @@ int main(){
     while(1){
         len=recv(sd, buf, BUF_LEN, 0);    
         printf("Mensagem: %s\n", buf);
+        if(!strcmp("exit", buf)){
+            printf("Closed");
+            break;
+        }
+            
        
     }
- 
+     close(so); 
+
     return 1;
 }
